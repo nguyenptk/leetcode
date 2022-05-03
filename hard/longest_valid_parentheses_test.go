@@ -14,7 +14,7 @@ func TestLongestValidParentheses(t *testing.T) {
 	for _, c := range cases {
 		got := LongestValidParentheses(c.in)
 		if got != c.want {
-			t.Errorf("IsValid(%q) == %d, want %d", c.in, got, c.want)
+			t.Errorf("LongestValidParentheses(%q) == %d, want %d", c.in, got, c.want)
 		}
 	}
 
