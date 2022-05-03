@@ -9,7 +9,7 @@ func MaxSubArray(nums []int) int {
 	// return maxSubArraySum(nums, 0, n-1)
 
 	// Kadane's Algorithm
-	return maxSubArraySumV2(nums)
+	return kadaneAlgorithm(nums)
 }
 
 // Return sum of maximum sub array from left to right
@@ -70,7 +70,7 @@ func maxCrossingSum(nums []int, l int, m int, r int) int {
 	return int(math.Max(sumLeftRight, maxLeftRight))
 }
 
-func maxSubArraySumV2(nums []int) int {
+func kadaneAlgorithm(nums []int) int {
 	n := len(nums)
 	maxSoFar := math.MinInt
 	maxEndingHere := 0
