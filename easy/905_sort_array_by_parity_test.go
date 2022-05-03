@@ -2,6 +2,7 @@ package easy
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 )
 
@@ -14,10 +15,8 @@ func TestSortArrayByParity(t *testing.T) {
 	}
 	for _, c := range cases {
 		got := SortArrayByParity(c.in)
-		for i := 0; i < len(got); i++ {
-			if got[i] != c.want[i] {
-				t.Errorf("SortArrayByParity(%q) == %d, want %d", fmt.Sprint(c.in), got[i], c.want[i])
-			}
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("SortArrayByParity(%q) == %q, want %q", fmt.Sprint(c.in), fmt.Sprint(got), fmt.Sprint(c.want))
 		}
 	}
 
