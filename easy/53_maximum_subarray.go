@@ -6,15 +6,14 @@ import "math"
 func MaxSubArray(nums []int) int {
 	// Divide and Conquer algorithm
 	// n := len(nums)
-	// return maxSubArraySum(nums, 0, n-1)
+	// return divideAndConquer(nums, 0, n-1)
 
 	// Kadane's Algorithm
 	return kadaneAlgorithm(nums)
 }
 
 // Return sum of maximum sub array from left to right
-func maxSubArraySum(nums []int, l int, r int) int {
-
+func divideAndConquer(nums []int, l int, r int) int {
 	// length is 1 -> return
 	if l == r {
 		return nums[l]
@@ -24,9 +23,9 @@ func maxSubArraySum(nums []int, l int, r int) int {
 	m := (l + r) / 2
 
 	// get max of left to mid array
-	maxLeft := float64(maxSubArraySum(nums, l, m))
+	maxLeft := float64(divideAndConquer(nums, l, m))
 	// get max of mid to right array
-	maxRight := float64(maxSubArraySum(nums, m+1, r))
+	maxRight := float64(divideAndConquer(nums, m+1, r))
 	// find max of left and right array
 	maxSubArray := math.Max(maxLeft, maxRight)
 
@@ -39,7 +38,6 @@ func maxSubArraySum(nums []int, l int, r int) int {
 
 // Find the maximum sum in array
 func maxCrossingSum(nums []int, l int, m int, r int) int {
-
 	// find max of left array
 	sum := 0
 	leftSum := math.MinInt32

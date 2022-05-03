@@ -10,7 +10,7 @@ func TestFindUnsortedSubarray(t *testing.T) {
 		{[]int{2, 6, 4, 8, 10, 9, 15}, 5},
 		{[]int{1, 2, 3, 4}, 0},
 		{[]int{1}, 0},
-		{[]int{1, 1, 3, 8, 8, 2, 2, 2}, 7},
+		{[]int{1, 1, 3, 8, 8, 2, 2, 2}, 6},
 	}
 	for _, c := range cases {
 		got := FindUnsortedSubarray(c.in)

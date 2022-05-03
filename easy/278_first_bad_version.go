@@ -23,6 +23,7 @@ func FirstBadVersion(n int) int {
 	return l
 }
 
+// mock isBadVersion API
 func isBadVersion(n int) bool {
 	if n == 4 {
 		return true
