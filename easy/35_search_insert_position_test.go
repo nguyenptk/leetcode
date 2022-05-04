@@ -1,7 +1,6 @@
 package easy
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -18,7 +17,7 @@ func TestSearchInsert(t *testing.T) {
 	for _, c := range cases {
 		got := SearchInsert(c.in, c.target)
 		if got != c.want {
-			t.Errorf("SearchInsert(%q, %d), == %d, want %d", fmt.Sprint(c.in), c.target, got, c.want)
+			t.Errorf("SearchInsert(%d, %d), == %d, want %d", c.in, c.target, got, c.want)
 		}
 	}
 

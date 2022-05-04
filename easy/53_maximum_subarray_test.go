@@ -1,7 +1,6 @@
 package easy
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -15,7 +14,7 @@ func TestMaxSubArray(t *testing.T) {
 	for _, c := range cases {
 		got := MaxSubArray(c.in)
 		if got != c.want {
-			t.Errorf("MaxSubArray(%q) == %d, want %d", fmt.Sprint(c.in), got, c.want)
+			t.Errorf("MaxSubArray(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}
 
