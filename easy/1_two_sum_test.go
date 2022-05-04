@@ -1,7 +1,6 @@
 package easy
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -19,7 +18,7 @@ func TestTwoSum(t *testing.T) {
 	for _, c := range cases {
 		got := TwoSum(c.in, c.target)
 		if !reflect.DeepEqual(got, c.want) {
-			t.Errorf("TwoSum(%q, %d) == %q, want %q", fmt.Sprint(c.in), c.target, fmt.Sprint(got), fmt.Sprint(c.want))
+			t.Errorf("TwoSum(%d, %d) == %d, want %d", c.in, c.target, got, c.want)
 		}
 	}
 
