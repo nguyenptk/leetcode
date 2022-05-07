@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestRotate(t *testing.T) {
+func TestRotateImage(t *testing.T) {
 	cases := []struct {
 		in   [][]int
 		want [][]int
@@ -22,7 +22,7 @@ func TestRotate(t *testing.T) {
 		},
 	}
 	for _, c := range cases {
-		got := Rotate(c.in)
+		got := RotateImage(c.in)
 		if !reflect.DeepEqual(got, c.want) {
 			t.Errorf("Rotate(%d) == %d, want %d", c.in, got, c.want)
 		}

@@ -2,7 +2,7 @@
 package medium
 
 // Add additional return value for unit-test
-func Rotate(matrix [][]int) [][]int {
+func RotateImage(matrix [][]int) [][]int {
 	n := len(matrix)
 	for i := 0; i < (n+1)/2; i++ {
 		for j := 0; j < (n / 2); j++ {
