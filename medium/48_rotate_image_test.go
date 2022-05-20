@@ -24,7 +24,7 @@ func TestRotateImage(t *testing.T) {
 	for _, c := range cases {
 		got := RotateImage(c.in)
 		if !reflect.DeepEqual(got, c.want) {
-			t.Errorf("Rotate(%d) == %d, want %d", c.in, got, c.want)
+			t.Errorf("RotateImage(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}
 }
