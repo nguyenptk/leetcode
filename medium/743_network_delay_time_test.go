@@ -1,7 +1,6 @@
 package medium
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -18,7 +17,7 @@ func TestNetworkDelayTime(t *testing.T) {
 	}
 	for _, c := range cases {
 		got := NetworkDelayTime(c.times, c.n, c.k)
-		if !reflect.DeepEqual(got, c.want) {
+		if got != c.want {
 			t.Errorf("NetworkDelayTime(%d) == %d, want %d", c.k, got, c.want)
 		}
 	}

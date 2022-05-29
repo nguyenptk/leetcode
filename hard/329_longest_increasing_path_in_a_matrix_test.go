@@ -1,7 +1,6 @@
 package hard
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -15,7 +14,7 @@ func TestLongestIncreasingPath(t *testing.T) {
 	}
 	for _, c := range cases {
 		got := LongestIncreasingPath(c.matrix)
-		if !reflect.DeepEqual(got, c.want) {
+		if got != c.want {
 			t.Errorf("LongestIncreasingPath(%d) == %d, want %d", c.matrix, got, c.want)
 		}
 	}
