@@ -20,5 +20,4 @@ func TestSearchInsert(t *testing.T) {
 			t.Errorf("SearchInsert(%d, %d), == %d, want %d", c.in, c.target, got, c.want)
 		}
 	}
-
 }

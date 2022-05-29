@@ -19,5 +19,4 @@ func TestNumberOfSteps(t *testing.T) {
 			t.Errorf("NumberOfSteps(%q) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

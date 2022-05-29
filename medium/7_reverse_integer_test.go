@@ -17,5 +17,4 @@ func TestReverse(t *testing.T) {
 			t.Errorf("Reverse(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

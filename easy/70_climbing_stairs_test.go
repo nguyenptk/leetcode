@@ -18,5 +18,4 @@ func TestClimbStairs(t *testing.T) {
 			t.Errorf("ClimbStairs(%q) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

@@ -18,5 +18,4 @@ func TestSearch(t *testing.T) {
 			t.Errorf("Search(%d, %d) == %d, want %d", c.in, c.target, got, c.want)
 		}
 	}
-
 }

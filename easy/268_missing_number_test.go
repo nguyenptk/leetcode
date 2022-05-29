@@ -19,5 +19,4 @@ func TestMissingNumber(t *testing.T) {
 			t.Errorf("MissingNumber(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

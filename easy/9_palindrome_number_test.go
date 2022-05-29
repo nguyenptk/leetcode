@@ -17,5 +17,4 @@ func TestIsPalindrome(t *testing.T) {
 			t.Errorf("IsPalindrome(%d) == %t, want %t", c.in, got, c.want)
 		}
 	}
-
 }

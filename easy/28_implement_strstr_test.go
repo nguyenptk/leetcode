@@ -19,5 +19,4 @@ func TestStrStr(t *testing.T) {
 			t.Errorf("StrStr(%s, %s), == %d, want %d", c.haystack, c.needle, got, c.want)
 		}
 	}
-
 }

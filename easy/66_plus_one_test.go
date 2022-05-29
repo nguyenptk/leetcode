@@ -23,7 +23,5 @@ func TestPlusOne(t *testing.T) {
 				t.Errorf("PlusOne(%q) == %d, want %d", fmt.Sprint(c.in), got[i], c.want[i])
 			}
 		}
-
 	}
-
 }
