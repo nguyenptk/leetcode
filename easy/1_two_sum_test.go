@@ -21,5 +21,4 @@ func TestTwoSum(t *testing.T) {
 			t.Errorf("TwoSum(%d, %d) == %d, want %d", c.in, c.target, got, c.want)
 		}
 	}
-
 }

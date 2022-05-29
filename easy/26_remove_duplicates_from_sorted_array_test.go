@@ -18,5 +18,4 @@ func TestRemoveDuplicates(t *testing.T) {
 			t.Errorf("RemoveDuplicates(%d), == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

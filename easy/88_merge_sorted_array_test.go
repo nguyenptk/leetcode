@@ -36,5 +36,4 @@ func TestMerge(t *testing.T) {
 			t.Errorf("Merge(%d, %d, %d, %d), == %d, want %d", c.nums1, c.m, c.nums2, c.n, got, c.want)
 		}
 	}
-
 }

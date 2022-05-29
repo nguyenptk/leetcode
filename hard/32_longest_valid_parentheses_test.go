@@ -17,5 +17,4 @@ func TestLongestValidParentheses(t *testing.T) {
 			t.Errorf("LongestValidParentheses(%q) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

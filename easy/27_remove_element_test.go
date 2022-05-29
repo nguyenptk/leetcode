@@ -19,5 +19,4 @@ func TestRemoveElement(t *testing.T) {
 			t.Errorf("RemoveElement(%d, %d), == %d, want %d", c.in, c.val, got, c.want)
 		}
 	}
-
 }

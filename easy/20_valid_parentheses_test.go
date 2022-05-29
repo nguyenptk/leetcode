@@ -17,5 +17,4 @@ func TestIsValid(t *testing.T) {
 			t.Errorf("IsValid(%q) == %t, want %t", c.in, got, c.want)
 		}
 	}
-
 }

@@ -18,5 +18,4 @@ func TestSortArrayByParity(t *testing.T) {
 			t.Errorf("SortArrayByParity(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

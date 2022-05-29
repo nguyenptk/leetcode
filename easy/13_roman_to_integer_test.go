@@ -17,5 +17,4 @@ func TestRomanToInt(t *testing.T) {
 			t.Errorf("RomanToInt(%q) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

@@ -18,5 +18,4 @@ func TestFirstBadVersion(t *testing.T) {
 			t.Errorf("FirstBadVersion(%q) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

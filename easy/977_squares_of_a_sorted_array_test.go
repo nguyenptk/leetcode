@@ -19,5 +19,4 @@ func TestSortedSquares(t *testing.T) {
 			t.Errorf("SortedSquares(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

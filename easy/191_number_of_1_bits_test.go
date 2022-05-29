@@ -18,5 +18,4 @@ func TestHammingWeight(t *testing.T) {
 			t.Errorf("HammingWeight(%q) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

@@ -18,5 +18,4 @@ func TestMaxProfit(t *testing.T) {
 			t.Errorf("MaxProfit(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }

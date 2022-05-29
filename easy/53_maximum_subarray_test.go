@@ -17,5 +17,4 @@ func TestMaxSubArray(t *testing.T) {
 			t.Errorf("MaxSubArray(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}
-
 }
