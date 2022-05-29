@@ -1,7 +1,6 @@
 package medium
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -15,7 +14,7 @@ func TestShortestPathBinaryMatrix(t *testing.T) {
 	}
 	for _, c := range cases {
 		got := ShortestPathBinaryMatrix(c.k)
-		if !reflect.DeepEqual(got, c.want) {
+		if got != c.want {
 			t.Errorf("ShortestPathBinaryMatrix(%d) == %d, want %d", c.k, got, c.want)
 		}
 	}

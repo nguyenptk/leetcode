@@ -1,7 +1,6 @@
 package hard
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -15,7 +14,7 @@ func TestMaxEnvelopes(t *testing.T) {
 	}
 	for _, c := range cases {
 		got := MaxEnvelopes(c.n)
-		if !reflect.DeepEqual(got, c.want) {
+		if got != c.want {
 			t.Errorf("MaxEnvelopes(%d) == %d, want %d", c.n, got, c.want)
 		}
 	}

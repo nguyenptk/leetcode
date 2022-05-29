@@ -1,7 +1,6 @@
 package easy
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -16,7 +15,7 @@ func TestMissingNumber(t *testing.T) {
 	}
 	for _, c := range cases {
 		got := MissingNumber(c.in)
-		if !reflect.DeepEqual(got, c.want) {
+		if got != c.want {
 			t.Errorf("MissingNumber(%d) == %d, want %d", c.in, got, c.want)
 		}
 	}

@@ -1,7 +1,6 @@
 package medium
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -17,7 +16,7 @@ func TestCoinChange(t *testing.T) {
 	}
 	for _, c := range cases {
 		got := CoinChange(c.coins, c.amount)
-		if !reflect.DeepEqual(got, c.want) {
+		if got != c.want {
 			t.Errorf("CoinChange(%d, %d) == %d, want %d", c.coins, c.amount, got, c.want)
 		}
 	}
