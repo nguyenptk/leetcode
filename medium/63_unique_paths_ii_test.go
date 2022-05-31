@@ -10,7 +10,7 @@ func TestUniquePathsWithObstacles(t *testing.T) {
 		want int
 	}{
 		{[][]int{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}, 2},
-		// {[][]int{{0, 1}, {0, 0}}, 1},
+		{[][]int{{0, 1}, {0, 0}}, 1},
 	}
 	for _, c := range cases {
 		got := UniquePathsWithObstacles(c.in)
