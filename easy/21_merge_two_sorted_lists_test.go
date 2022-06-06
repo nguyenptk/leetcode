@@ -32,7 +32,7 @@ func TestMergeTwoLists(t *testing.T) {
 					},
 				},
 			},
-			&ListNode{ // list1 [1,1,2,3,4,4]
+			&ListNode{ // result [1,1,2,3,4,4]
 				Val: 1,
 				Next: &ListNode{
 					Val: 1,
