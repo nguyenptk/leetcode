@@ -15,7 +15,7 @@ func TestMaxOperations(t *testing.T) {
 	for _, c := range cases {
 		got := MaxOperations(c.in, c.target)
 		if got != c.want {
-			t.Errorf("MaxOperations(%d) == %d, want %d", c.in, got, c.want)
+			t.Errorf("MaxOperations(%d, %d) == %d, want %d", c.in, c.target, got, c.want)
 		}
 	}
 }
