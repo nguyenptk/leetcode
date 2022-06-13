@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestConstructorow2D(t *testing.T) {
+func TestConstructor2D(t *testing.T) {
 	cases := []struct {
 		matrix [][]int
 		sum    []int
@@ -32,7 +32,7 @@ func TestConstructorow2D(t *testing.T) {
 		got := obj.SumRegion(c.sum[0], c.sum[1], c.sum[2], c.sum[3])
 
 		if !reflect.DeepEqual(got, c.want) {
-			t.Errorf("Constructorow2D(%d) == %d, want %d", c.matrix, got, c.want)
+			t.Errorf("Constructor2D(%d) == %d, want %d", c.matrix, got, c.want)
 		}
 	}
 }
