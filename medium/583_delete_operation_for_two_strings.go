@@ -7,11 +7,10 @@ func MinDistance(word1 string, word2 string) int {
 	if word1 == word2 {
 		return 0
 	}
-
 	l1 := len(word1)
 	l2 := len(word2)
 
-	return findDiff(word1, word2, l1, l2)
+	return l1 + l2 - 2*findDiff(word1, word2, l1, l2)
 }
 
 func findDiff(word1, word2 string, l1, l2 int) int {
