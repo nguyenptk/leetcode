@@ -33,7 +33,7 @@ func findDiff(word1, word2 string, l1, l2 int) int {
 }
 
 func maxNums(nums ...int) int {
-	res := math.MinInt64
+	res := math.MinInt8
 	for _, num := range nums {
 		if num > res {
 			res = num
