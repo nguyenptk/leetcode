@@ -15,7 +15,7 @@ func TestMinOperations(t *testing.T) {
 	for _, c := range cases {
 		got := MinOperations(c.nums, c.x)
 		if got != c.want {
-			t.Errorf("MinOperations(%d) == %d, want %d", c.nums, got, c.want)
+			t.Errorf("MinOperations(%d, %d) == %d, want %d", c.nums, c.x, got, c.want)
 		}
 	}
 }
