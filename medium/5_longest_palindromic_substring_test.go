@@ -7,8 +7,8 @@ func TestLongestPalindrome(t *testing.T) {
 		in   string
 		want string
 	}{
-		// {"babad", "bab"},
-		// {"cbbd", "bb"},
+		{"babad", "bab"},
+		{"cbbd", "bb"},
 		{"forgeeksskeegfor", "geeksskeeg"},
 	}
 	for _, c := range cases {
