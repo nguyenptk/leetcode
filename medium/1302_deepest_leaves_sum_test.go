@@ -76,7 +76,7 @@ func TestDeepestLeavesSum(t *testing.T) {
 		},
 	}
 	for _, c := range cases {
-		got := sumMaxLevel(c.in)
+		got := DeepestLeavesSum(c.in)
 		if got != c.want {
 			t.Errorf("DeepestLeavesSum(%q) == %d, want %d", fmt.Sprint(c.in), got, c.want)
 		}
