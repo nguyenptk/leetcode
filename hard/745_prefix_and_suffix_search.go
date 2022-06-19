@@ -21,14 +21,12 @@ type WordFilter struct {
 func Constructor(words []string) WordFilter {
 	pTrie := NewTrieNode()
 	sTrie := NewTrieNode()
-
 	for i := 0; i < len(words); i++ {
 		word := words[i]
 		wlen := len(word)
 		insert(word, i, pTrie, 0, wlen, 1)
 		insert(word, i, sTrie, wlen-1, -1, -1)
 	}
-
 	return WordFilter{pTrie, sTrie}
 }
 
