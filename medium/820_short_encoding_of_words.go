@@ -17,6 +17,7 @@ func MinimumLengthEncoding(words []string) int {
 			delete(mapW, s)
 		}
 	}
+
 	// Initialize the result with length of mapW because of #
 	result := len(mapW)
 	// Iterate the mapW to count the length of words
