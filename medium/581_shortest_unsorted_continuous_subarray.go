@@ -13,7 +13,9 @@ func FindUnsortedSubarray(nums []int) int {
 			flag = true
 		}
 		if flag {
-			min = int(math.Min(float64(min), float64(nums[i])))
+			if min > nums[i] {
+				min = nums[i]
+			}
 		}
 	}
 

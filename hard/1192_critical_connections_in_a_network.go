@@ -1,8 +1,6 @@
 // https://leetcode.com/problems/critical-connections-in-a-network/
 package hard
 
-import "math"
-
 var disc, low []int
 var time int = 0
 
@@ -32,9 +30,13 @@ func dfs(curr, prev int) {
 	for _, next := range edgeMap[curr] {
 		if disc[next] == 0 {
 			dfs(next, curr)
-			low[curr] = int(math.Min(float64(low[curr]), float64(low[next])))
+			if low[curr] > low[next] {
+				low[curr] = low[next]
+			}
 		} else if next != prev {
-			low[curr] = int(math.Min(float64(low[curr]), float64(disc[next])))
+			if low[curr] > disc[next] {
+				low[curr] = disc[next]
+			}
 		}
 		if low[next] > disc[curr] {
 			ans = append(ans, [][]int{{curr, next}}...)
