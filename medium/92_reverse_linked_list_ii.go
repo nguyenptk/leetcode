@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/reverse-linked-list-ii/
 package medium
 
-func reverseBetween(head *ListNode, left int, right int) *ListNode {
+func ReverseBetween(head *ListNode, left int, right int) *ListNode {
 	if head == nil || left == right {
 		return head
 	}
