@@ -9,6 +9,7 @@ func TestNumMatchingSubseq(t *testing.T) {
 		want  int
 	}{
 		{"abcde", []string{"a", "bb", "acd", "ace"}, 3},
+		{"dsahjpjauf", []string{"ahjpjau", "ja", "ahbwzgqnuk", "tnmlanowax"}, 3},
 	}
 	for _, c := range cases {
 		got := NumMatchingSubseq(c.s, c.words)
