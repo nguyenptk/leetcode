@@ -24,6 +24,7 @@ func translate(c byte) byte {
 	}
 	return codex[c]
 }
+
 func compare(word string) {
 	codex = map[byte]byte{}
 	for i := 0; i < len(word); i++ {
