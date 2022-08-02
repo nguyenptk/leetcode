@@ -10,6 +10,7 @@ func UniquePaths(m int, n int) int {
 	}
 	return findRoute(m, n, 0, 0)
 }
+
 func findRoute(m, n, row, col int) int {
 	if row >= m || col >= n {
 		return 0
