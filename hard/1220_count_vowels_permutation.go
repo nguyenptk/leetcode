@@ -3,7 +3,7 @@ package hard
 
 func CountVowelPermutation(n int) int {
 	// To avoid the large output value
-	kMod := 1e9 + 7
+	kMod := (int)(1e9 + 7)
 
 	// Initialize 2D dp array
 	dp := make([][]int, n+1)
@@ -37,7 +37,7 @@ func CountVowelPermutation(n int) int {
 			for _, v := range relation[u] {
 
 				// Update dp[i + 1][u]
-				dp[i+1][u] += dp[i][v] % int(kMod)
+				dp[i+1][u] += dp[i][v] % kMod
 			}
 		}
 	}
@@ -46,7 +46,7 @@ func CountVowelPermutation(n int) int {
 	result := 0
 
 	for i := 0; i < 5; i++ {
-		result = (result + dp[n][i]) % int(kMod)
+		result = (result + dp[n][i]) % kMod
 	}
 
 	// Return count of permutations
