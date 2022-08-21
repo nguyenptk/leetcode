@@ -41,9 +41,5 @@ func MovesToStamp(stamp string, target string) []int {
 		}
 	}
 
-	// sort.Slice(result, func(i, j int) bool {
-	// 	return result[i] < result[j]
-	// })
-
 	return result
 }
