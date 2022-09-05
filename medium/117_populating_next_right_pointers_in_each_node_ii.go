@@ -3,10 +3,11 @@
 package medium
 
 type Node struct {
-	Val   int
-	Left  *Node
-	Right *Node
-	Next  *Node
+	Val      int
+	Left     *Node
+	Right    *Node
+	Next     *Node
+	Children []*Node
 }
 
 func Connect(root *Node) *Node {
