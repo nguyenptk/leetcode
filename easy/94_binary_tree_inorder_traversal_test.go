@@ -31,7 +31,7 @@ func TestInorderTraversal(t *testing.T) {
 		},
 		// test case 3
 		{
-			&TreeNode{Val: 1}, // []
+			&TreeNode{Val: 1}, // [1]
 			[]int{1},
 		},
 	}
