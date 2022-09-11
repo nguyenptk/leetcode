@@ -12,7 +12,7 @@ func MaxProfit(k int, prices []int) int {
 	// Init result
 	result := make([][]int, k+1)
 	for i := range result {
-		result[i] = make([]int, n)
+		result[i] = make([]int, n+1)
 	}
 
 	// Fill the table in bottom-up
