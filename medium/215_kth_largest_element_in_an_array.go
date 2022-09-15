@@ -15,12 +15,12 @@ func FindKthLargest(nums []int, k int) int {
 		return nums[i] < nums[j]
 	})
 
-	kthLargest := nums[0] // First
-	nums = nums[1:]       // Poll
+	kthLargest := nums[0] // FIRST
+	nums = nums[1:]       // POLL
 
 	for i := 0; i < n-k; i++ {
-		kthLargest = nums[0] // First
-		nums = nums[1:]      // Poll
+		kthLargest = nums[0] // FIRST
+		nums = nums[1:]      // POLL
 	}
 
 	return kthLargest

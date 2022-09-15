@@ -14,8 +14,8 @@ func LevelOrder(root *TreeNode) [][]int {
 	for len(q) > 0 {
 		currLevel := []int{}
 		for i := len(q); i > 0; i-- {
-			node := q[0]                            // First
-			q = q[1:]                               // Poll
+			node := q[0]                            // FIRST
+			q = q[1:]                               // POLL
 			currLevel = append(currLevel, node.Val) // Add current value to current array
 			if node.Left != nil {
 				q = append(q, *node.Left) // Add back node.Left to queue

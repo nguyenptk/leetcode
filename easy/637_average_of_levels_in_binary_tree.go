@@ -9,8 +9,8 @@ func AverageOfLevels(root *TreeNode) []float64 {
 		count := len(queue)
 		sum := float64(0)
 		for i := 0; i < count; i++ {
-			curr := queue[0]  // First
-			queue = queue[1:] // Poll
+			curr := queue[0]  // FIRST
+			queue = queue[1:] // POLL
 			sum += float64(curr.Val)
 			if curr.Left != nil {
 				queue = append(queue, *curr.Left)
