@@ -12,8 +12,8 @@ func NAryLevelOrder(root *Node) [][]int {
 	for len(queue) > 0 {
 		currLevel := []int{}
 		for i := len(queue); i > 0; i-- {
-			node := queue[0]  // First
-			queue = queue[1:] // Poll
+			node := queue[0]  // FIRST
+			queue = queue[1:] // POLL
 			currLevel = append(currLevel, node.Val)
 			for _, v := range node.Children {
 				queue = append(queue, *v)
