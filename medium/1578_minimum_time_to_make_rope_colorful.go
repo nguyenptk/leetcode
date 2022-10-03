@@ -23,8 +23,8 @@ func MinCost(colors string, neededTime []int) int {
 				currMax = neededTime[i]
 			}
 		} else {
-			curr = c
 			sumMax += currMax
+			curr = c
 			currMax = neededTime[i]
 		}
 	}
