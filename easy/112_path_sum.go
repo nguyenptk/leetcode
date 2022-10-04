@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/path-sum/
 package easy
 
-func hasPathSum(root *TreeNode, targetSum int) bool {
+func HasPathSum(root *TreeNode, targetSum int) bool {
 	return recurPathSum(root, targetSum)
 }
 
