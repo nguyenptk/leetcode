@@ -53,7 +53,7 @@ func TestAverageOfLevels(t *testing.T) {
 	for _, c := range cases {
 		got := AverageOfLevels(c.in)
 		if !reflect.DeepEqual(got, c.want) {
-			t.Errorf("AverageOfLevels(%s) == %f, want %f", fmt.Sprint(c.in), got, c.want)
+			t.Errorf("AverageOfLevels(%q) == %f, want %f", fmt.Sprint(c.in), got, c.want)
 		}
 	}
 }
