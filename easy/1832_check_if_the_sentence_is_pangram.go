@@ -5,9 +5,8 @@ func CheckIfPangram(sentence string) bool {
 	mapLetters := map[byte]bool{}
 
 	for _, v := range sentence {
-		key := byte(v)
-		if _, ok := mapLetters[key]; !ok {
-			mapLetters[key] = true
+		if _, ok := mapLetters[byte(v)]; !ok {
+			mapLetters[byte(v)] = true
 		}
 	}
 
