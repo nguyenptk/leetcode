@@ -3,13 +3,13 @@ package hard
 
 import "sort"
 
-func orderlyQueue(s string, k int) string {
+func OrderlyQueue(s string, k int) string {
 	if k == 1 {
 		result := s
 		for i := 0; i < len(s); i++ {
-			tmp := s[i:] + s[:i]
-			if tmp < s {
-				s = tmp
+			tmp := s[i:] + s[0:i]
+			if tmp < result {
+				result = tmp
 			}
 		}
 		return result
