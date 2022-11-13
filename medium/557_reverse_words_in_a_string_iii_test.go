@@ -2,7 +2,7 @@ package medium
 
 import "testing"
 
-func TestReverseWords(t *testing.T) {
+func TestReverseWordsII(t *testing.T) {
 	cases := []struct {
 		s    string
 		want string
@@ -11,9 +11,9 @@ func TestReverseWords(t *testing.T) {
 		{"God Ding", "doG gniD"},
 	}
 	for _, c := range cases {
-		got := ReverseWords(c.s)
+		got := ReverseWordsII(c.s)
 		if got != c.want {
-			t.Errorf("ReverseWords(%s) == %s, want %s", c.s, got, c.want)
+			t.Errorf("ReverseWordsII(%s) == %s, want %s", c.s, got, c.want)
 		}
 	}
 }

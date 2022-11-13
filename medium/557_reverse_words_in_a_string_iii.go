@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func ReverseWords(s string) string {
+func ReverseWordsII(s string) string {
 	result := ""
 	arrS := strings.Split(s, " ")
 	for k, v := range arrS {
