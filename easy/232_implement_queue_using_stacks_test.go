@@ -13,8 +13,8 @@ func TestConstructorMyQueue(t *testing.T) {
 		{
 			[]int{1, 2},
 			map[string]string{
-				"peek":  "1",     // equals to second push
-				"pop":   "1",     // equals to second push
+				"peek":  "1",     // equals to first push
+				"pop":   "1",     // equals to first push
 				"empty": "false", // not empty
 			},
 		},
@@ -29,8 +29,8 @@ func TestConstructorMyQueue(t *testing.T) {
 		{
 			[]int{10, -1, -5, 3, 7},
 			map[string]string{
-				"peek":  "10",    // equals to last push
-				"pop":   "10",    // equals to last push
+				"peek":  "10",    // equals to first push
+				"pop":   "10",    // equals to first push
 				"empty": "false", // not empty
 			},
 		},
