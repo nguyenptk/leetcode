@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/unique-paths-iii/
 package hard
 
-func uniquePathsIII(grid [][]int) int {
+func UniquePathsIII(grid [][]int) int {
 	result := 0
 	empty := 1
 	var sx int
