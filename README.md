@@ -1,5 +1,3 @@
-# LeetCode ft. Go
+# Enjoy your free time
 
-A few practices with Go programming | Unit-testing
-
-[![](https://img.shields.io/badge/Easy-green)](https://github.com/nguyenptk/leetcode/tree/main/easy) [![](https://img.shields.io/badge/Medium-yellow)](https://github.com/nguyenptk/leetcode/tree/main/medium) [![](https://img.shields.io/badge/Hard-red)](https://github.com/nguyenptk/leetcode/tree/main/hard)
+[Maybe] Practicing LeetCode in your free time is healthy.
