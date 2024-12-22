@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/kth-largest-element-in-a-stream/description/
+// https://leetcode.com/problems/kth-largest-element-in-a-stream/
 
 package java.easy;
 

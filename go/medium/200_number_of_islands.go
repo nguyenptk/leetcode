@@ -4,9 +4,9 @@ package medium
 func NumIslands(grid [][]byte) int {
 	result := 0
 
-	for i, row := range grid {
-		for j, point := range row {
-			if point == '1' {
+	for i := 0; i < len(grid); i++ {
+		for j := 0; j < len(grid[0]); j++ {
+			if grid[i][j] == '1' {
 				result++
 				dfsNumIslands(grid, i, j)
 			}

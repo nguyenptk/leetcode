@@ -13,17 +13,16 @@ func NewTrieNodeW() *TrieNodeW {
 	}
 }
 
-var root *TrieNodeW
+var root *TrieNodeW = NewTrieNodeW()
 
 func FindWords(board [][]byte, words []string) []string {
-	root = NewTrieNodeW()
 	for _, w := range words {
 		insertTrie(w)
 	}
 	result := []string{}
 	for i := 0; i < len(board); i++ {
 		for j := 0; j < len(board[0]); j++ {
-			dfsTrie(board, i, j, root, &result)
+			dfsFindWords(board, i, j, root, &result)
 		}
 	}
 
@@ -42,11 +41,10 @@ func insertTrie(word string) {
 	node.Word = word
 }
 
-func dfsTrie(board [][]byte, i, j int, node *TrieNodeW, result *[]string) {
-	if i < 0 || i == len(board) || j < 0 || j == len(board[0]) {
+func dfsFindWords(board [][]byte, i, j int, node *TrieNodeW, result *[]string) {
+	if i < 0 || j < 0 || i == len(board) || j == len(board[0]) {
 		return
 	}
-
 	if board[i][j] == '*' {
 		return
 	}
@@ -56,16 +54,15 @@ func dfsTrie(board [][]byte, i, j int, node *TrieNodeW, result *[]string) {
 	if child == nil {
 		return
 	}
-
 	if child.Word != "" {
 		*result = append(*result, child.Word)
 		child.Word = ""
 	}
 
 	board[i][j] = '*'
-	dfsTrie(board, i+1, j, child, result)
-	dfsTrie(board, i-1, j, child, result)
-	dfsTrie(board, i, j+1, child, result)
-	dfsTrie(board, i, j-1, child, result)
+	dfsFindWords(board, i+1, j, child, result)
+	dfsFindWords(board, i-1, j, child, result)
+	dfsFindWords(board, i, j+1, child, result)
+	dfsFindWords(board, i, j-1, child, result)
 	board[i][j] = c
 }

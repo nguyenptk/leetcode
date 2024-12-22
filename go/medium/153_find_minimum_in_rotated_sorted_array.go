@@ -1,8 +1,6 @@
 // https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
 package medium
 
-import "math"
-
 func FindMin(nums []int) int {
 	if len(nums) == 1 {
 		return nums[0]
@@ -31,5 +29,5 @@ func FindMin(nums []int) int {
 		}
 	}
 
-	return math.MaxInt16
+	return -1
 }

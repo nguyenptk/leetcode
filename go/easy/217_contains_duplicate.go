@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/contains-duplicate/description/
+// https://leetcode.com/problems/contains-duplicate/
 package easy
 
 func ContainsDuplicate(nums []int) bool {

@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/permutations/description/
+// https://leetcode.com/problems/permutations/
 package medium
 
 func Permute(nums []int) [][]int {

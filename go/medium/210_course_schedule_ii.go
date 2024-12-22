@@ -1,44 +1,45 @@
 // https://leetcode.com/problems/course-schedule
 package medium
 
-func CanFinish(numCourses int, prerequisites [][]int) bool {
-	graph := make(map[int][]int)
-
+func FindOrder(numCourses int, prerequisites [][]int) []int {
+	graph := make([][]int, 0)
+	for i := 0; i < numCourses; i++ {
+		graph = append(graph, make([]int, 0))
+	}
 	for _, p := range prerequisites {
 		from := p[1]
 		to := p[0]
-		graph[from] = append(graph[from], to)
+		graph[to] = append(graph[to], from)
 	}
 
-	visit := make(map[int]bool)
+	result := make([]int, 0)
+	visit := make([]bool, numCourses)
+	cycle := make([]bool, numCourses)
 
 	var dfs func(course int) bool
 	dfs = func(course int) bool {
-		if visit[course] {
+		if cycle[course] {
 			return false
-		}
-		if len(graph[course]) == 0 {
+		} else if visit[course] {
 			return true
 		}
-
-		visit[course] = true
-
+		cycle[course] = true
 		for _, p := range graph[course] {
 			if !dfs(p) {
 				return false
 			}
 		}
-		delete(visit, course)
-		graph[course] = []int{}
-
+		cycle[course] = false
+		visit[course] = true
+		result = append(result, course)
 		return true
 	}
 
 	for i := 0; i < numCourses; i++ {
 		if !dfs(i) {
-			return false
+			return []int{}
 		}
 	}
 
-	return true
+	return result
 }

@@ -1,33 +1,30 @@
 // https://leetcode.com/problems/unique-paths/
 package medium
 
-var cache [][]int
-
 func UniquePaths(m int, n int) int {
-	cache = make([][]int, m)
-	for i := range cache {
-		cache[i] = make([]int, n)
+	matrix := make([][]int, m)
+	for i := range matrix {
+		matrix[i] = make([]int, n)
 	}
-	return findRoute(m, n, 0, 0)
+
+	return findRound(matrix, 0, 0)
 }
 
-func findRoute(m, n, row, col int) int {
-	if row >= m || col >= n {
+func findRound(matrix [][]int, x, y int) int {
+	if x >= len(matrix) || y >= len(matrix[0]) {
 		return 0
 	}
-
-	if row == m-1 && col == n-1 {
+	if x == len(matrix)-1 && y == len(matrix[0])-1 {
 		return 1
 	}
 
-	if cache[row][col] > 0 {
-		return cache[row][col]
+	if matrix[x][y] > 0 {
+		return matrix[x][y]
 	}
 
-	down := findRoute(m, n, row+1, col)
-	right := findRoute(m, n, row, col+1)
+	right := findRound(matrix, x+1, y)
+	down := findRound(matrix, x, y+1)
+	matrix[x][y] = right + down
 
-	cache[row][col] = down + right
-
-	return cache[row][col]
+	return matrix[x][y]
 }

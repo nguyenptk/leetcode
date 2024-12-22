@@ -2,39 +2,34 @@
 package hard
 
 func MinWindow(s string, t string) string {
-	start, end := 0, 0
+	l, r := 0, 0
 	target := make(map[uint8]int)
-	current := make(map[uint8]int)
+	curr := make(map[uint8]int)
 	distinct := 0
-	minSubString := ""
+	result := ""
 
 	for i := range t {
 		target[t[i]]++
 	}
 
-	for end < len(s) {
-		current[s[end]]++
-		if target[s[end]] != 0 && target[s[end]] == current[s[end]] {
+	for r < len(s) {
+		curr[s[r]]++
+		if target[s[r]] != 0 && target[s[r]] == curr[s[r]] {
 			distinct++
 		}
 
 		for distinct == len(target) {
-			if minSubString == "" {
-				minSubString = s[start : end+1]
+			if result == "" || r-l+1 < len(result) {
+				result = s[l : r+1]
 			}
-			if end-start+1 < len(minSubString) {
-				minSubString = s[start : end+1]
-			}
-
-			current[s[start]]--
-			if current[s[start]] < target[s[start]] {
+			curr[s[l]]--
+			if curr[s[l]] < target[s[l]] {
 				distinct--
 			}
-
-			start++
+			l++
 		}
-		end++
+		r++
 	}
 
-	return minSubString
+	return result
 }

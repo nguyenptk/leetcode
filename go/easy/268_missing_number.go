@@ -2,15 +2,11 @@
 package easy
 
 func MissingNumber(nums []int) int {
-	// Init sum of all numbers
+	n := len(nums)
+	total := n * (n + 1) / 2 // https://brilliant.org/wiki/sum-of-n-n2-or-n3/
 	sum := 0
-	// Init total by the sum of all numbers
-	total := len(nums) * (len(nums) + 1) / 2
-	// Iterate through the array
-	for _, num := range nums {
-		// Add the number to the sum
-		sum += num
+	for i := range nums {
+		sum += nums[i]
 	}
-	// Return the difference between the sum and the total that is the missing number
 	return total - sum
 }

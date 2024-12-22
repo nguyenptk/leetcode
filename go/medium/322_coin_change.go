@@ -1,40 +1,56 @@
 // https://leetcode.com/problems/coin-change/
 package medium
 
-import "math"
-
 func CoinChange(coins []int, amount int) int {
+	// return countingTopDown(coins, amount, make(map[int]int))
+	return countingBottomUp(coins, amount)
+}
 
-	// table[i] will be storing the number of solutions for
-	// value i. We need n+1 rows as the table is constructed
-	// in bottom up manner using the base case (n = 0)
-	table := make([]int, amount+1)
-
-	// Base case (If given value is 0)
-	table[0] = 0
-
-	// Initialize all table values as Infinite
-	for i := 1; i <= amount; i++ {
-		table[i] = math.MaxInt
+func countingTopDown(coins []int, amount int, memo map[int]int) int {
+	if amount == 0 {
+		return 0
+	}
+	if amount < 0 {
+		return -1
 	}
 
-	// Compute minimum coins required for all
-	// values from 1 to amount
-	for i := 1; i <= amount; i++ {
-		// Go through all coins smaller than i
-		for j := 0; j < len(coins); j++ {
-			if coins[j] <= i {
-				subRes := table[i-coins[j]]
-				if subRes != math.MaxInt && subRes+1 < table[i] {
-					table[i] = subRes + 1
-				}
+	if _, ok := memo[amount]; ok {
+		return memo[amount]
+	}
+
+	minCoins := -1
+	for _, coin := range coins {
+		subAmount := amount - coin
+		subCoins := countingTopDown(coins, subAmount, memo)
+		if subCoins != -1 {
+			numCoins := subCoins + 1
+			if minCoins == -1 || minCoins > numCoins {
+				minCoins = numCoins
 			}
 		}
 	}
 
-	if table[amount] == math.MaxInt {
+	memo[amount] = minCoins
+
+	return minCoins
+}
+
+func countingBottomUp(coins []int, amount int) int {
+	dp := make([]int, amount+1)
+	for i := range dp {
+		dp[i] = amount + 1
+	}
+	dp[0] = 1
+	for a := 1; a <= amount; a++ {
+		for _, c := range coins {
+			if a-c >= 0 {
+				dp[a] = min(dp[a], dp[a-c]+1)
+			}
+		}
+	}
+	if dp[amount] > amount {
 		return -1
 	}
 
-	return table[amount]
+	return dp[amount]
 }

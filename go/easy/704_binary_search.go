@@ -9,15 +9,17 @@ func Search(nums []int, target int) int {
 }
 
 func binarySearch(nums []int, l int, r int, target int) int {
-	if r >= l {
-		mid := l + (r-l)/2
-		if nums[mid] == target {
-			return mid
+	for r >= l {
+		m := l + (r-l)/2
+		if nums[m] == target {
+			return m
 		}
-		if nums[mid] > target {
-			return binarySearch(nums, l, mid-1, target)
+		if nums[m] > target {
+			r = m - 1
 		}
-		return binarySearch(nums, mid+1, r, target)
+		if nums[m] < target {
+			l = m + 1
+		}
 	}
 	return -1
 }

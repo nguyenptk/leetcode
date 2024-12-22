@@ -18,11 +18,7 @@ func recValidate(root *TreeNode, min, max int) bool {
 		return true
 	}
 
-	if min >= root.Val {
-		return false
-	}
-
-	if max <= root.Val {
+	if min >= root.Val || max <= root.Val {
 		return false
 	}
 

@@ -1,35 +1,33 @@
 // https://leetcode.com/problems/decode-ways/
 package medium
 
+import "strconv"
+
 func NumDecodings(s string) int {
-	if s[0] == '0' {
+	return recNumDecodings(s, 0, make(map[int]int))
+}
+
+func recNumDecodings(s string, idx int, memo map[int]int) int {
+	if idx == len(s) {
+		return 1
+	}
+	if s[idx] == '0' {
 		return 0
 	}
-
-	n := len(s)
-	dp := make([]int, n+1)
-	// base cases
-	dp[n] = 1
-	if isValidOne(s[n-1]) {
-		dp[n-1] = 1
+	if idx == len(s)-1 {
+		return 1
 	}
 
-	for i := n - 2; i >= 0; i-- {
-		if isValidOne(s[i]) {
-			dp[i] += dp[i+1]
-		}
-		if isValidTwo(s[i], s[i+1]) {
-			dp[i] += dp[i+2]
-		}
+	if _, ok := memo[idx]; ok {
+		return memo[idx]
 	}
 
-	return dp[0]
-}
+	count := recNumDecodings(s, idx+1, memo)
+	c2, _ := strconv.Atoi(s[idx : idx+2])
+	if c2 <= 26 {
+		count += recNumDecodings(s, idx+2, memo)
+	}
+	memo[idx] = count
 
-func isValidOne(c byte) bool {
-	return c != '0'
-}
-
-func isValidTwo(c1, c2 byte) bool {
-	return c1 == '1' || c1 == '2' && c2 < '7'
+	return count
 }

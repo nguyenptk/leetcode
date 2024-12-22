@@ -11,16 +11,22 @@ func WordPattern(pattern string, s string) bool {
 		return false
 	}
 
-	mapP := map[byte]int{}
-	mapW := map[string]int{}
+	mapP := map[byte]string{}
+	mapW := map[string]byte{}
 
 	for i := 0; i < len(pattern); i++ {
-		if mapP[pattern[i]] != mapW[words[i]] {
-			return false
-		} else {
-			mapP[pattern[i]] = i + 1
-			mapW[words[i]] = i + 1
+		if w, ok := mapP[pattern[i]]; ok {
+			if w != words[i] {
+				return false
+			}
 		}
+		if p, ok := mapW[words[i]]; ok {
+			if p != pattern[i] {
+				return false
+			}
+		}
+		mapW[words[i]] = pattern[i]
+		mapP[pattern[i]] = words[i]
 	}
 
 	return true

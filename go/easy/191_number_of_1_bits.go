@@ -1,8 +1,12 @@
 // https://leetcode.com/problems/number-of-1-bits/
 package easy
 
-import "math/bits"
-
 func HammingWeight(num uint32) int {
-	return bits.OnesCount32(num)
+	result := 0
+	for num != 0 {
+		result++
+		num = num & (num - 1)
+	}
+
+	return result
 }

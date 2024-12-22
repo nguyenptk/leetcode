@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/counting-bits/description/
+// https://leetcode.com/problems/counting-bits/
 package java.easy;
 
 class CountingBits {

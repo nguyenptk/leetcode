@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/task-scheduler/
+
 package java.medium;
 
 import java.util.Collections;
@@ -5,7 +7,7 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class TaskScheduler {
+class TaskScheduler {
     class Pair<K, V> {
         K key;
         V value;
