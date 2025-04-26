@@ -7,22 +7,30 @@ type NodeGraph struct {
 }
 
 func CloneGraph(nodeGraph *NodeGraph) *NodeGraph {
-	return dfsCloneGraph(nodeGraph, map[*NodeGraph]*NodeGraph{})
-}
+	visit := make(map[*NodeGraph]*NodeGraph)
 
-func dfsCloneGraph(nodeGraph *NodeGraph, visited map[*NodeGraph]*NodeGraph) *NodeGraph {
-	if nodeGraph == nil {
-		return nil
+	var dfs func(node *NodeGraph) *NodeGraph
+	dfs = func(node *NodeGraph) *NodeGraph {
+		if node == nil {
+			return nil
+		}
+
+		if curr, ok := visit[node]; ok {
+			return curr
+		}
+		clone := &NodeGraph{
+			Val: node.Val,
+		}
+		visit[node] = clone
+
+		for _, nei := range node.Neighbors {
+			clone.Neighbors = append(clone.Neighbors, dfs(nei))
+
+		}
+
+		return clone
 	}
-	if _, ok := visited[nodeGraph]; ok {
-		return visited[nodeGraph]
-	}
-	clone := &NodeGraph{
-		Val: nodeGraph.Val,
-	}
-	visited[nodeGraph] = clone
-	for _, n := range nodeGraph.Neighbors {
-		clone.Neighbors = append(clone.Neighbors, dfsCloneGraph(n, visited))
-	}
-	return clone
+
+	return dfs(nodeGraph)
+
 }

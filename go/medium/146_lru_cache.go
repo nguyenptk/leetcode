@@ -83,6 +83,44 @@ type LRUCache struct {
 	cache    map[int]*list.Element
 }
 
+type NodeCache struct {
+	key   int
+	value int
+}
+
+func ConstructorLRUCache(capacity int) LRUCache {
+	return LRUCache{
+		capacity: capacity,
+		list:     list.New(),
+		cache:    make(map[int]*list.Element),
+	}
+}
+
+func (f *LRUCache) Get(key int) int {
+	if node, ok := f.cache[key]; ok {
+		val := node.Value.(*NodeCache).value
+		f.list.MoveToBack(node)
+		return val
+	}
+	return -1
+}
+
+func (f *LRUCache) Put(key, value int) {
+	if node, ok := f.cache[key]; ok {
+		node.Value.(*NodeCache).value = value
+		f.list.MoveToBack(node)
+		return
+	}
+	node := &NodeCache{key: key, value: value}
+	data := f.list.PushBack(node)
+	f.cache[key] = data
+	if f.list.Len() > f.capacity {
+		idx := f.list.Front().Value.(*NodeCache).key
+		delete(f.cache, idx)
+		f.list.Remove(f.list.Front())
+	}
+}
+
 /**
  * Your LRUCache object will be instantiated and called as such:
  * obj := Constructor(capacity);

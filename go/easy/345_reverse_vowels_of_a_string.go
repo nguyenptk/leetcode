@@ -2,31 +2,34 @@
 package easy
 
 func ReverseVowels(s string) string {
-	vowels := []string{"a", "e", "i", "o", "u", "A", "E", "I", "O", "U"}
-	queue := []string{}
-	for i := 0; i < len(s); i++ {
-		if contains(vowels, string(s[i])) {
-			queue = append(queue, string(s[i]))
-		}
+	m := map[byte]bool{
+		'a': true,
+		'e': true,
+		'i': true,
+		'o': true,
+		'u': true,
+		'A': true,
+		'E': true,
+		'I': true,
+		'O': true,
+		'U': true,
 	}
-	result := ""
-	for i := 0; i < len(s); i++ {
-		if contains(vowels, string(s[i])) {
-			end := queue[len(queue)-1]   // TOP
-			queue = queue[:len(queue)-1] // POP
-			result += end
-		} else {
-			result += string(s[i])
-		}
-	}
-	return string(result)
-}
 
-func contains(vowels []string, s string) bool {
-	for _, v := range vowels {
-		if v == s {
-			return true
+	l := 0
+	r := len(s) - 1
+
+	arr := []byte(s)
+	for l <= r {
+		if m[arr[l]] && m[arr[r]] {
+			arr[l], arr[r] = arr[r], arr[l]
+			l++
+			r--
+		} else if !m[arr[l]] {
+			l++
+		} else if !m[arr[r]] {
+			r--
 		}
 	}
-	return false
+
+	return string(arr)
 }

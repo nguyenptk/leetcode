@@ -3,7 +3,7 @@ package hard
 
 import "strconv"
 
-func Calculate(s string) int {
+func CalculateI(s string) int {
 	ans := 0
 	num := 0
 	sign := 1

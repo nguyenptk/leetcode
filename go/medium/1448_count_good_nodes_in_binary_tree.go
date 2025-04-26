@@ -2,23 +2,23 @@
 package medium
 
 func GoodNodes(root *TreeNode) int {
-	return recGoodNodes(root, root.Val)
-}
+	var dfs func(root *TreeNode, curMax int) int
+	dfs = func(root *TreeNode, curMax int) int {
+		if root == nil {
+			return 0
+		}
 
-func recGoodNodes(root *TreeNode, parent int) int {
-	if root == nil {
-		return 0
+		count := 0
+		if root.Val >= curMax {
+			count++
+			curMax = root.Val
+		}
+
+		l := dfs(root.Left, curMax)
+		r := dfs(root.Right, curMax)
+
+		return l + r + count
 	}
 
-	result := 1
-	max := root.Val
-	if max < parent {
-		max = parent
-		result = 0
-	}
-
-	result += recGoodNodes(root.Left, max)
-	result += recGoodNodes(root.Right, max)
-
-	return result
+	return dfs(root, root.Val)
 }

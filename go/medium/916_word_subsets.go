@@ -2,41 +2,35 @@
 package medium
 
 func WordSubsets(words1 []string, words2 []string) []string {
-	result := []string{}
-	counts2 := make([]int, 26)
+	result := make([]string, 0)
 
-	for _, w2 := range words2 {
-		tmp := counter(w2)
-		for i := 0; i < 26; i++ {
-			if counts2[i] < tmp[i] {
-				counts2[i] = tmp[i]
-			}
+	maxFreq := make(map[byte]int)
+	for _, word2 := range words2 {
+		tempFreq := make(map[byte]int)
+		for i := 0; i < len(word2); i++ {
+			tempFreq[word2[i]]++
+			maxFreq[word2[i]] = max(maxFreq[word2[i]], tempFreq[word2[i]])
 		}
 	}
 
-	for _, w1 := range words1 {
-		if isUniversal(counter(w1), counts2) {
-			result = append(result, w1)
+	for _, word1 := range words1 {
+		m := make(map[byte]int)
+		for i := 0; i < len(word1); i++ {
+			m[word1[i]]++
 		}
 
+		isSubset := true
+		for c, count := range maxFreq {
+			if m[c] < count {
+				isSubset = false
+				break
+			}
+		}
+
+		if isSubset {
+			result = append(result, word1)
+		}
 	}
 
 	return result
-}
-
-func counter(s string) []int {
-	count := make([]int, 26)
-	for _, c := range s {
-		count[c-'a']++
-	}
-	return count
-}
-
-func isUniversal(counts1 []int, counts2 []int) bool {
-	for i := 0; i < 26; i++ {
-		if counts1[i] < counts2[i] {
-			return false
-		}
-	}
-	return true
 }

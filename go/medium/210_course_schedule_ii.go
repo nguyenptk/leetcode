@@ -43,3 +43,43 @@ func FindOrder(numCourses int, prerequisites [][]int) []int {
 
 	return result
 }
+
+// Topology Sort approach
+// func FindOrder(numCourses int, prerequisites [][]int) []int {
+//     result := make([]int, 0)
+
+//     adj := make(map[int][]int)
+//     inDegrees := make([]int, numCourses)
+//     for _, pre := range prerequisites {
+//         from := pre[0]
+//         to := pre[1]
+//         adj[to] = append(adj[to], from)
+//         inDegrees[from]++
+//     }
+
+//     queue := make([]int, 0)
+//     for i := range inDegrees {
+//         if inDegrees[i] == 0 {
+//             queue = append(queue, i)
+//         }
+//     }
+
+//     for len(queue) > 0 {
+//         course := queue[0]
+//         queue = queue[1:]
+
+//         result = append(result, course)
+
+//         for _, nei := range adj[course] {
+//             inDegrees[nei]--
+//             if inDegrees[nei] == 0 {
+//                 queue = append(queue, nei)
+//             }
+//         }
+//     }
+
+//     if len(result) == numCourses {
+//         return result
+//     }
+//     return []int{}
+// }

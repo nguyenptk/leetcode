@@ -18,3 +18,12 @@ func popCount(idx int) int {
 
 	return count
 }
+
+// DP approach
+// func CountBits(n int) []int {
+//     dp := make([]int, n+1)
+//     for i := 0; i < n+1; i++ {
+//         dp[i] = dp[i/2] + (i%2)
+//     }
+//     return dp
+// }

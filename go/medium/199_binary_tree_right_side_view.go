@@ -16,3 +16,20 @@ func dfs(depth int, root *TreeNode, result *[]int) {
 		dfs(depth+1, root.Left, result)
 	}
 }
+
+func bfs(root *TreeNode, result *[]int) {
+	queue := []*TreeNode{root}
+
+	for len(queue) > 0 {
+		node := queue[len(queue)-1]
+
+		if node.Left != nil {
+			queue = append(queue, node.Left)
+		}
+		if node.Right != nil {
+			queue = append(queue, node.Right)
+		}
+
+		*result = append(*result, node.Val)
+	}
+}

@@ -31,10 +31,3 @@ func LongestStrChain(words []string) int {
 
 	return best
 }
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}

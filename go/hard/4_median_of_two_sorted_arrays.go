@@ -1,75 +1,54 @@
 // https://leetcode.com/problems/median-of-two-sorted-arrays/
 package hard
 
-import "math"
+import (
+	"math"
+)
 
 func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
-	A, B := nums1, nums2
-	total := len(nums1) + len(nums2)
-	half := (total + 1) / 2
-
-	var Aleft, Aright float64
-	var Bleft, Bright float64
-
-	if len(B) < len(A) {
-		A, B = B, A
+	// Ensure nums1 is the smaller array for binary search
+	if len(nums1) > len(nums2) {
+		nums1, nums2 = nums2, nums1
 	}
 
-	l, r := 0, len(A)-1
-	for {
-		i := (l + r) >> 1 // A
-		j := half - i - 2 // B
+	m, n := len(nums1), len(nums2)
+	l, r := 0, m
+	var aL, aR, bL, bR float64
 
-		if i >= 0 {
-			Aleft = float64(A[i])
-		} else {
-			Aleft = math.Inf(-1)
-		}
+	for l <= r {
+		i := (l + r) >> 1   // Partition for nums1
+		j := (m+n+1)>>1 - i // Partition for nums2
 
-		if (i + 1) < len(A) {
-			Aright = float64(A[i+1])
-		} else {
-			Aright = math.Inf(1)
-		}
+		aL = getBoundary(nums1, i-1)
+		aR = getBoundary(nums1, i)
+		bL = getBoundary(nums2, j-1)
+		bR = getBoundary(nums2, j)
 
-		if j >= 0 {
-			Bleft = float64(B[j])
-		} else {
-			Bleft = math.Inf(-1)
-		}
-
-		if (j + 1) < len(B) {
-			Bright = float64(B[j+1])
-		} else {
-			Bright = math.Inf(1)
-		}
-
-		// partition is correct
-		if Aleft <= Bright && Bleft <= Aright {
-			// odd
-			if total%2 == 1 {
-				return maxFloat64(Aleft, Bleft)
+		// Check if partition is correct
+		if aL <= bR && bL <= aR {
+			// Odd total length
+			if (m+n)%2 == 1 {
+				return math.Max(aL, bL)
 			}
-			// even
-			return (maxFloat64(Aleft, Bleft) + minFloat64(Aright, Bright)) / 2
-		} else if Aleft > Bright {
-			r = i - 1
+			// Even total length
+			return (math.Max(aL, bL) + min(aR, bR)) / 2
+		} else if aL > bR {
+			r = i - 1 // Move left
 		} else {
-			l = i + 1
+			l = i + 1 // Move right
 		}
 	}
+
+	return 0.0
 }
 
-func minFloat64(a, b float64) float64 {
-	if a > b {
-		return b
+// Helper function to get boundaries
+func getBoundary(arr []int, idx int) float64 {
+	if idx < 0 {
+		return math.Inf(-1)
 	}
-	return a
-}
-
-func maxFloat64(a, b float64) float64 {
-	if a > b {
-		return a
+	if idx >= len(arr) {
+		return math.Inf(1)
 	}
-	return b
+	return float64(arr[idx])
 }
