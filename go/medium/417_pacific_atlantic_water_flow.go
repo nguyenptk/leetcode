@@ -4,22 +4,41 @@ package medium
 func PacificAtlantic(heights [][]int) [][]int {
 	rows := len(heights)
 	cols := len(heights[0])
+
 	pac := make(map[int]bool)
 	atl := make(map[int]bool)
 
-	for c := 0; c < cols; c++ {
-		dfsPacificAtlantic(heights, 0, c, pac, heights[0][c])
-		dfsPacificAtlantic(heights, rows-1, c, atl, heights[rows-1][c])
+	var dfs func(r, c int, visited map[int]bool, height int)
+	dfs = func(r, c int, visited map[int]bool, height int) {
+		if r < 0 || r >= rows || c < 0 || c >= cols {
+			return
+		}
+		if heights[r][c] < height {
+			return
+		}
+		key := r*cols + c
+		if visited[key] {
+			return
+		}
+		visited[key] = true
+		dfs(r+1, c, visited, heights[r][c])
+		dfs(r-1, c, visited, heights[r][c])
+		dfs(r, c+1, visited, heights[r][c])
+		dfs(r, c-1, visited, heights[r][c])
 	}
 
-	for r := 0; r < rows; r++ {
-		dfsPacificAtlantic(heights, r, 0, pac, heights[r][0])
-		dfsPacificAtlantic(heights, r, cols-1, atl, heights[r][cols-1])
+	for i := range rows {
+		dfs(i, 0, pac, heights[i][0])
+		dfs(i, cols-1, atl, heights[i][cols-1])
+	}
+	for j := range cols {
+		dfs(0, j, pac, heights[0][j])
+		dfs(rows-1, j, atl, heights[rows-1][j])
 	}
 
 	result := make([][]int, 0)
-	for r := 0; r < rows; r++ {
-		for c := 0; c < cols; c++ {
+	for r := range rows {
+		for c := range cols {
 			if pac[r*cols+c] && atl[r*cols+c] {
 				result = append(result, []int{r, c})
 			}
@@ -29,18 +48,5 @@ func PacificAtlantic(heights [][]int) [][]int {
 	return result
 }
 
-func dfsPacificAtlantic(heights [][]int, r, c int, visit map[int]bool, prevHeight int) {
-	if visit[r*len(heights[0])+c] ||
-		r < 0 ||
-		c < 0 ||
-		r == len(heights) ||
-		c == len(heights[0]) ||
-		heights[r][c] < prevHeight {
-		return
-	}
-	visit[r*len(heights[0])+c] = true
-	dfsPacificAtlantic(heights, r+1, c, visit, heights[r][c])
-	dfsPacificAtlantic(heights, r-1, c, visit, heights[r][c])
-	dfsPacificAtlantic(heights, r, c+1, visit, heights[r][c])
-	dfsPacificAtlantic(heights, r, c-1, visit, heights[r][c])
-}
+// Time complexity: O(M⋅N)
+// Space complexity: O(M⋅N)

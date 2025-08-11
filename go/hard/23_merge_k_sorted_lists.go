@@ -9,7 +9,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func mergeKLists(lists []*ListNode) *ListNode {
+func MergeKLists(lists []*ListNode) *ListNode {
 	if len(lists) == 0 {
 		return nil
 	}
@@ -38,3 +38,6 @@ func mergeKLists(lists []*ListNode) *ListNode {
 
 	return result.Next
 }
+
+// Time complexity: O(Nlogk) where k is the number of linked lists.
+// Space complexity: O(n) Creating a new linked list costs O(n) space.

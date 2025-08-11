@@ -44,6 +44,9 @@ func FindOrder(numCourses int, prerequisites [][]int) []int {
 	return result
 }
 
+// Time Complexity: O(V+E) where V represents the number of vertices and E represents the number of edges
+// Space Complexity: O(V+E) the in-degree array requires O(V) space, and all its adjacent nodes O(E) in the form of a list as the value.
+
 // Topology Sort approach
 // func FindOrder(numCourses int, prerequisites [][]int) []int {
 //     result := make([]int, 0)

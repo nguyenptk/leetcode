@@ -1,13 +1,14 @@
+// https://leetcode.com/problems/alien-dictionary/
 package hard
 
-func alienOrder(words []string) string {
-	m := make(map[byte]map[byte]struct{})
+func AlienOrder(words []string) string {
+	graph := make(map[byte][]byte)
+	visited := make(map[byte]int)
+	allChars := make(map[byte]bool)
 
-	for i := range words {
-		for j := range words[i] {
-			if _, ok := m[words[i][j]]; !ok {
-				m[words[i][j]] = make(map[byte]struct{})
-			}
+	for _, word := range words {
+		for i := 0; i < len(word); i++ {
+			allChars[word[i]] = true
 		}
 	}
 
@@ -19,43 +20,42 @@ func alienOrder(words []string) string {
 		}
 		for j := 0; j < minLen; j++ {
 			if w1[j] != w2[j] {
-				m[w1[j]][w2[j]] = struct{}{}
+				graph[w1[j]] = append(graph[w1[j]], w2[j])
 				break
 			}
 		}
 	}
 
-	visited := make(map[byte]int)
-	var data []byte
-
-	var dfs func(c byte) bool
-	dfs = func(c byte) bool {
-		if visited[c] == 1 {
-			return true
-		}
-		if visited[c] == -1 {
+	var result []byte
+	var dfs func(byte) bool
+	dfs = func(ch byte) bool {
+		if visited[ch] == 1 {
 			return false
 		}
-		visited[c] = 1
-		for i := range m[c] {
-			if dfs(i) {
-				return true
+		if visited[ch] == 2 {
+			return true
+		}
+		visited[ch] = 1
+		for _, nei := range graph[ch] {
+			if !dfs(nei) {
+				return false
 			}
 		}
-		visited[c] = -1
-		data = append(data, c)
-		return false
+		visited[ch] = 2
+		result = append(result, ch)
+		return true
 	}
 
-	for i := range m {
-		if dfs(i) {
-			return ""
+	for ch := range allChars {
+		if visited[ch] == 0 {
+			if !dfs(ch) {
+				return ""
+			}
 		}
 	}
 
-	var result []byte
-	for i := len(data) - 1; i >= 0; i-- {
-		result = append(result, data[i])
+	for i, j := 0, len(result)-1; i < j; i, j = i+1, j-1 {
+		result[i], result[j] = result[j], result[i]
 	}
 
 	return string(result)

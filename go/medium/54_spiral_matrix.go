@@ -40,3 +40,6 @@ func SpiralOrder(matrix [][]int) []int {
 
 	return result
 }
+
+// Time complexity: O(M⋅N)
+// Space complexity: O(1)

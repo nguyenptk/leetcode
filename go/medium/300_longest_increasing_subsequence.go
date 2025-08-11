@@ -21,6 +21,9 @@ func biSearchLengthOfLIS(nums []int) int {
 	return len(list)
 }
 
+// Time complexity: O(nlogn)
+// Space complexity: O(n)
+
 func dpLengthOfLIS(nums []int) int {
 	n := len(nums)
 
@@ -45,3 +48,6 @@ func dpLengthOfLIS(nums []int) int {
 
 	return longest
 }
+
+// Time complexity: O(n^2)
+// Space complexity: O(n)

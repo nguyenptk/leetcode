@@ -29,3 +29,6 @@ func CopyRandomList(head *Node) *Node {
 
 	return oldToCopy[head]
 }
+
+// Time Complexity: O(N)
+// Space Complexity: O(N)

@@ -66,3 +66,6 @@ func dfsFindWords(board [][]byte, i, j int, node *TrieNodeW, result *[]string) {
 	dfsFindWords(board, i, j-1, child, result)
 	board[i][j] = c
 }
+
+// Time complexity: O(M(4⋅3^L−1)), where M is the number of cells in the board and L is the maximum length of words.
+// Space Complexity: O(N)

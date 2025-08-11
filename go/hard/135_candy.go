@@ -2,43 +2,22 @@
 package hard
 
 func Candy(ratings []int) int {
-	count := 0
-	n := len(ratings)
-
-	// Initialize left array
-	l := make([]int, n)
-	for i := range l {
-		l[i] = 1
+	candies := make([]int, len(ratings))
+	for i := range candies {
+		candies[i] = 1
 	}
-
-	// Initialize right array
-	r := make([]int, n)
-	for i := range r {
-		r[i] = 1
-	}
-
-	// Iterate from left
-	for i := 1; i < n; i++ {
+	for i := 1; i < len(ratings); i++ {
 		if ratings[i] > ratings[i-1] {
-			l[i] = l[i-1] + 1
+			candies[i] = candies[i-1] + 1
 		}
 	}
-
-	// Iterate from right
-	for i := n - 2; i >= 0; i-- {
+	sum := candies[len(candies)-1]
+	for i := len(ratings) - 2; i >= 0; i-- {
 		if ratings[i] > ratings[i+1] {
-			r[i] = r[i+1] + 1
+			candies[i] = max(candies[i], candies[i+1]+1)
 		}
+		sum += candies[i]
 	}
 
-	// Merge left and right
-	for i := 0; i < n; i++ {
-		if l[i] >= r[i] {
-			count += l[i]
-		} else {
-			count += r[i]
-		}
-	}
-
-	return count
+	return sum
 }

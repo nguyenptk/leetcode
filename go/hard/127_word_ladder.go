@@ -3,51 +3,53 @@
 package hard
 
 func LadderLength(beginWord string, endWord string, wordList []string) int {
-	if !contains(wordList, endWord) {
+	n := len(beginWord)
+	wordSet := make(map[string]bool)
+	for _, w := range wordList {
+		wordSet[w] = true
+	}
+
+	if !wordSet[endWord] {
 		return 0
 	}
 
-	n := len(beginWord)
-	graph := make(map[string][]string) // h*t: [hot, hit]
+	// Build graph with intermediate patterns
+	graph := make(map[string][]string)
 	for _, w := range wordList {
 		for i := 0; i < n; i++ {
-			newWord := w[:i] + "*" + w[i+1:]
-			graph[newWord] = append(graph[newWord], w)
+			key := w[:i] + "*" + w[i+1:]
+			graph[key] = append(graph[key], w)
 		}
 	}
 
-	result := 1
 	q := []string{beginWord}
 	seen := map[string]bool{beginWord: true}
+	steps := 1
 
-	for len(q) != 0 {
-		for tmp := len(q); tmp > 0; tmp-- {
-			word := q[0] // Pop front
-			q = q[1:]
+	for len(q) > 0 {
+		nextLevel := []string{}
+		for _, word := range q {
 			if word == endWord {
-				return result
+				return steps
 			}
-			for i := 0; i < len(word); i++ {
+			for i := 0; i < n; i++ {
 				pattern := word[:i] + "*" + word[i+1:]
-				for _, neighbor := range graph[pattern] {
-					if !seen[neighbor] {
-						seen[neighbor] = true
-						q = append(q, neighbor)
+				for _, nei := range graph[pattern] {
+					if !seen[nei] {
+						seen[nei] = true
+						nextLevel = append(nextLevel, nei)
 					}
 				}
 			}
 		}
-		result++
+		q = nextLevel
+		steps++
 	}
 
 	return 0
 }
 
-func contains(wordList []string, endWord string) bool {
-	for _, w := range wordList {
-		if w == endWord {
-			return true
-		}
-	}
-	return false
-}
+// n: length of each word
+// L: number of words in wordList
+// Time Complexity: O(L × n)
+// Space Complexity: O(L × n)

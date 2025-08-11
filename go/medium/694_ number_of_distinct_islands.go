@@ -1,57 +1,50 @@
 // https://leetcode.com/problems/number-of-distinct-islands/
 package medium
 
-import "fmt"
-
-type pair struct{ r, c int }
+import "strings"
 
 func NumDistinctIslands(grid [][]int) int {
-	if len(grid) == 0 || len(grid[0]) == 0 {
-		return 0
-	}
-	rows, cols := len(grid), len(grid[0])
+	rows := len(grid)
+	cols := len(grid[0])
+	unique := make(map[string]bool)
+	visited := make(map[int]bool)
 
-	seen := make([][]bool, rows)
-	for i := range seen {
-		seen[i] = make([]bool, cols)
-	}
-
-	shapes := map[string]struct{}{}
-
-	var currOrigin pair
-	var currCells []pair
-
-	var dfs func(r, c int)
-	dfs = func(r, c int) {
-		if r < 0 || r >= rows || c < 0 || c >= cols {
+	var path strings.Builder
+	var dfs func(row, col int, dir string)
+	dfs = func(row, col int, dir string) {
+		if row < 0 || row >= rows ||
+			col < 0 || col >= cols {
 			return
 		}
-		if seen[r][c] || grid[r][c] == 0 {
+
+		key := row*cols + col
+		if visited[key] || grid[row][col] != 1 {
 			return
 		}
-		seen[r][c] = true
-		currCells = append(currCells, pair{r - currOrigin.r, c - currOrigin.c})
-		dfs(r+1, c)
-		dfs(r-1, c)
-		dfs(r, c+1)
-		dfs(r, c-1)
+		visited[key] = true
+
+		path.WriteString(dir)
+
+		dfs(row+1, col, "D")
+		dfs(row-1, col, "U")
+		dfs(row, col+1, "R")
+		dfs(row, col-1, "L")
+
+		path.WriteString("0")
 	}
 
-	for i := 0; i < rows; i++ {
-		for j := 0; j < cols; j++ {
-			if grid[i][j] == 1 && !seen[i][j] {
-				currOrigin = pair{i, j}
-				currCells = currCells[:0]
-				dfs(i, j)
-
-				key := ""
-				for _, p := range currCells {
-					key += fmt.Sprintf("%d_%d;", p.r, p.c)
-				}
-				shapes[key] = struct{}{}
+	for row := 0; row < rows; row++ {
+		for col := 0; col < cols; col++ {
+			path.Reset()
+			dfs(row, col, "0")
+			if path.Len() > 0 {
+				unique[path.String()] = true
 			}
 		}
 	}
 
-	return len(shapes)
+	return len(unique)
 }
+
+// Time Complexity: O(M⋅N). Same as Approach 2.
+// Space complexity: O(M⋅N). Same as Approach 2.

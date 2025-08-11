@@ -30,3 +30,6 @@ func CalculateII(s string) int {
 
 	return result + last
 }
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)

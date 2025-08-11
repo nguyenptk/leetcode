@@ -6,6 +6,7 @@ import "sort"
 func ThreeSum(nums []int) [][]int {
 	sort.Ints(nums)
 
+	// two pointers
 	result := make([][]int, 0)
 	for i := 0; i < len(nums); i++ {
 		if i == 0 || nums[i-1] != nums[i] {
@@ -30,3 +31,6 @@ func ThreeSum(nums []int) [][]int {
 
 	return result
 }
+
+// Time complexity: O(n^2)
+// Space complexity: O(logn) -> O(n) depends on the sort algorithm.

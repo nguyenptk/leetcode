@@ -6,7 +6,7 @@ import "math"
 func FindMaxAverage(nums []int, k int) float64 {
 	l, r := math.MaxFloat64, math.SmallestNonzeroFloat64
 	for _, num := range nums {
-		l = min(l, float64(num))
+		l = minFloat64(l, float64(num))
 		r = max(r, float64(num))
 	}
 
@@ -39,7 +39,7 @@ func isValid(nums []int, m float64, k int) bool {
 	for i := k; i < len(nums); i++ {
 		sum += float64(nums[i]) - m
 		prefixSum += float64(nums[i-k]) - m
-		minPrefixSum = min(minPrefixSum, prefixSum)
+		minPrefixSum = minFloat64(minPrefixSum, prefixSum)
 
 		if sum > minPrefixSum {
 			return true
@@ -47,4 +47,11 @@ func isValid(nums []int, m float64, k int) bool {
 	}
 
 	return false
+}
+
+func minFloat64(a, b float64) float64 {
+	if a < b {
+		return a
+	}
+	return b
 }

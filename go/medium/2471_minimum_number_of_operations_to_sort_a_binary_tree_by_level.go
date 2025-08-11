@@ -5,7 +5,7 @@ import (
 	"sort"
 )
 
-func MinimumOperations(root *TreeNode) int {
+func MinimumOperationsBT(root *TreeNode) int {
 	queue := []*TreeNode{root}
 	totalSwaps := 0
 

@@ -121,6 +121,9 @@ func (f *LRUCache) Put(key, value int) {
 	}
 }
 
+// Time complexity: O(1) for both get and put.
+// Space complexity: O(capacity)
+
 /**
  * Your LRUCache object will be instantiated and called as such:
  * obj := Constructor(capacity);

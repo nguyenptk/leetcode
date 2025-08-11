@@ -1,5 +1,7 @@
+// https://leetcode.com/problems/range-sum-query-2d-immutable/
 package medium
 
+// Sum(ABCD)=Sum(OD)−Sum(OB)−Sum(OC)+Sum(OA)
 type NumMatrix struct {
 	dp [][]int
 }

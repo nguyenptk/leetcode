@@ -25,3 +25,6 @@ func IsMatch(s string, p string) bool {
 	}
 	return dfs(0, 0)
 }
+
+// Time complexity:	O(m × n)
+// Space complexity: O(m × n)

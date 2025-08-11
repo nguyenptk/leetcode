@@ -23,3 +23,7 @@ func TopKFrequent(nums []int, k int) []int {
 
 	return result
 }
+
+// Time complexity: O(n)
+// Space complexity: O(n)
+// Because total stored elements = number of elements in nums, and each appears only once in a bucket.

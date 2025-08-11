@@ -35,6 +35,9 @@ func countingTopDown(coins []int, amount int, memo map[int]int) int {
 	return minCoins
 }
 
+// Time complexity: O(S∗n), where S is the amount, n is denomination count.
+// Space complexity: O(S), where S is the amount to change
+
 func countingBottomUp(coins []int, amount int) int {
 	dp := make([]int, amount+1)
 	for i := range dp {

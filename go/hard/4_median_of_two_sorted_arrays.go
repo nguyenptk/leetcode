@@ -31,7 +31,7 @@ func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 				return math.Max(aL, bL)
 			}
 			// Even total length
-			return (math.Max(aL, bL) + min(aR, bR)) / 2
+			return (math.Max(aL, bL) + math.Min(aR, bR)) / 2
 		} else if aL > bR {
 			r = i - 1 // Move left
 		} else {
